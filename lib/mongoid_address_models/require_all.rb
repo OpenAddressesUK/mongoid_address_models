@@ -5,7 +5,7 @@ require 'mongoid_geospatial'
 require 'stringex'
 
 root_path = "#{File.dirname(__FILE__)}/../.."
-%w[ app/models lib ].each do |path|
+%w[ app/models ].each do |path|
   full_path = File.expand_path("#{root_path}/#{path}")
   $LOAD_PATH.unshift full_path unless $LOAD_PATH.include?(full_path)
 end
