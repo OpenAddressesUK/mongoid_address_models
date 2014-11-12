@@ -10,4 +10,5 @@ root_path = "#{File.dirname(__FILE__)}/../.."
   $LOAD_PATH.unshift full_path unless $LOAD_PATH.include?(full_path)
 end
 
+Dir.glob("#{root_path}/app/models/concerns/*.rb").each {|f| require f }
 Dir.glob("#{root_path}/app/**/*.rb").each {|f| require f }

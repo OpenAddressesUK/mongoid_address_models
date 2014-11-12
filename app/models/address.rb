@@ -1,5 +1,3 @@
-require_relative './concerns/tokenable'
-
 class Address < Tokenable
   before_create :create_slugs
 
