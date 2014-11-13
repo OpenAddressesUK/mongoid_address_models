@@ -8,7 +8,7 @@ describe Address do
                                 :address,
                                 pao: "Flat 1",
                                 sao: "123",
-                                street: "Toy Street",
+                                street: FactoryGirl.create(:street, name: "Toy Street"),
                                 locality: FactoryGirl.create(:locality, name: "Toytown"),
                                 town: FactoryGirl.create(:town, name: "Toyland"),
                                 postcode: FactoryGirl.create(:postcode, name: "TOY 123")
@@ -17,7 +17,7 @@ describe Address do
 
       expect(address.pao).to eq "Flat 1"
       expect(address.sao).to eq "123"
-      expect(address.street).to eq "Toy Street"
+      expect(address.street.name).to eq "Toy Street"
       expect(address.locality.name).to eq "Toytown"
       expect(address.town.name).to eq "Toyland"
       expect(address.postcode.name).to eq "TOY 123"
