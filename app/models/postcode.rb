@@ -1,7 +1,7 @@
 class Postcode < Tokenable
   include Mongoid::Geospatial
 
-  field :postcode, type: String
+  field :name, type: String
   field :area, type: String
   field :outcode, type: String
   field :incode, type: String

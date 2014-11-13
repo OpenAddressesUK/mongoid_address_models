@@ -3,7 +3,7 @@ require 'date'
 FactoryGirl.define do
 
   factory :postcode do
-    postcode "AB1 0AA"
+    name "AB1 0AA"
     area "AB"
     outcode "AB1"
     incode "0AA"
