@@ -3,9 +3,9 @@ class Address < Tokenable
   field :pao, type: String
   field :sao, type: String
   field :street, type: String
-  field :locality, type: String
-  field :town, type: String
-  field :postcode, type: String
 
+  embeds_one :locality
+  embeds_one :town
+  embeds_one :postcode
 
 end
