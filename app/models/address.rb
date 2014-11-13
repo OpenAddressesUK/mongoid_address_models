@@ -11,15 +11,12 @@ class Address < Tokenable
   def full_address
     address = [
       :sao,
-      :pao
-    ].map { |e| self.send(e) }
-
-    address << [
+      :pao,
       :street,
       :locality,
       :town,
       :postcode
-    ].map { |e| self.send(e).name }
+    ].map { |e| self.send(e).class == String ? self.send(e) : self.send(e).name }
 
     address.reject { |e| e.nil? }.join(", ")
   end
