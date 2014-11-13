@@ -23,4 +23,10 @@ describe Address do
       expect(address.postcode.name).to eq "TOY 123"
   end
 
+  it "generates a full address" do
+    address = FactoryGirl.create(:address)
+
+    expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham City, W12 8QT")
+  end
+
 end
