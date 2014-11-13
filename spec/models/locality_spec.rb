@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Settlement do
+describe Locality do
 
   it_behaves_like "Tokenable"
 

@@ -1,4 +1,4 @@
-class Settlement < Tokenable
+class Locality < Tokenable
   include Mongoid::Geospatial
 
   field :name, type: String

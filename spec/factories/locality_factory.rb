@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :settlement do
+  factory :locality do
     name "Woughton"
     authority "E06000042"
   end
