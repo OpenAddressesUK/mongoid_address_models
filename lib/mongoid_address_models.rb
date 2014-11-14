@@ -1,4 +1,6 @@
-require "mongoid"
+require 'mongoid'
+require 'mongoid_token'
+require 'mongoid_geospatial'
 
 begin
   module MongoidAddressModels
