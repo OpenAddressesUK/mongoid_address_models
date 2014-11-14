@@ -17,6 +17,7 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
     Street.create_indexes
+    Postcode.create_indexes
   end
 
   config.after(:each) do
