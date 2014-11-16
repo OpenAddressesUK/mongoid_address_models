@@ -16,7 +16,7 @@ class Address < Tokenable
       :locality,
       :town,
       :postcode
-    ].map { |e| self.send(e).class == String ? self.send(e) : self.send(e).name }
+    ].map { |e| self.send(e).class == String ? self.send(e) : self.send(e).try(:name) }
 
     address.reject { |e| e.nil? }.join(", ")
   end
