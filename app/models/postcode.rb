@@ -12,4 +12,6 @@ class Postcode < Tokenable
   field :authority, type: String
 
   geo_field :location
+
+  index({ name: 1 })
 end
