@@ -8,13 +8,16 @@ describe Locality do
     postcode = FactoryGirl.create(:locality,
           name: "Woughton",
           authority: "E06000042",
-          location: [51.511716, -0.152918]
+          lat_lng: [51.511716, -0.152918],
+          easting_northing: [487556, 236786]
         )
 
     expect(postcode.name).to eq("Woughton")
     expect(postcode.authority).to eq("E06000042")
-    expect(postcode.location.x).to eq(51.511716)
-    expect(postcode.location.y).to eq(-0.152918)
+    expect(postcode.lat_lng.x).to eq(51.511716)
+    expect(postcode.lat_lng.y).to eq(-0.152918)
+    expect(postcode.easting_northing.x).to eq(487556)
+    expect(postcode.easting_northing.y).to eq(236786)
   end
 
 end
