@@ -1,6 +1,3 @@
-class Town < Tokenable
+class Town < AddressPart
   field :area, type: String
-  field :name, type: String
-
-  index({ name: 1 })
 end
