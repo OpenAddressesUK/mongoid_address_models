@@ -29,4 +29,15 @@ describe Address do
     expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham City, W12 8QT")
   end
 
+  it "changes full address on subsequent save" do
+    address = FactoryGirl.create(:address)
+
+    expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham City, W12 8QT")
+
+    address.town = FactoryGirl.create(:town, name: "Gotham")
+    address.save
+
+    expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham, W12 8QT")
+  end
+
 end
