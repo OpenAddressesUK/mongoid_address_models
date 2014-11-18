@@ -1,5 +1,6 @@
 require 'factory_girl'
 require 'database_cleaner'
+require 'pry'
 
 require 'mongoid_address_models/require_all'
 
