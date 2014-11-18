@@ -48,4 +48,10 @@ describe Address do
     expect(Address.count).to eq(1)
   end
 
+  it "enforces the presence of a street" do
+    address = FactoryGirl.build(:address, street: nil)
+    address.save
+
+    expect(address.valid?).to be_false
+  end
 end
