@@ -52,7 +52,7 @@ describe Address do
     address = FactoryGirl.build(:address, street: nil)
     address.save
 
-    expect(address.valid?).to be_false
+    expect(address.valid?).to eq(false)
   end
 
   it "enforces the presence of either a pao or sao" do
@@ -64,9 +64,9 @@ describe Address do
     address2.save
     address3.save
 
-    expect(address1.valid?).to be_false
-    expect(address2.valid?).to be_true
-    expect(address3.valid?).to be_true
+    expect(address1.valid?).to eq(false)
+    expect(address2.valid?).to eq(true)
+    expect(address3.valid?).to eq(true)
   end
 
 end
