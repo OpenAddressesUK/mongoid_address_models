@@ -40,4 +40,12 @@ describe Address do
     expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham, W12 8QT")
   end
 
+  it "enforces the uniqueness of a full address" do
+    2.times do
+      FactoryGirl.create(:address)
+    end
+
+    expect(Address.count).to eq(1)
+  end
+
 end

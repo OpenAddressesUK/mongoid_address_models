@@ -1,6 +1,7 @@
 class Address < Tokenable
 
   before_save :generate_full_address
+  validates_uniqueness_of :full_address
 
   field :pao, type: String
   field :sao, type: String
@@ -10,6 +11,8 @@ class Address < Tokenable
   embeds_one :locality
   embeds_one :town
   embeds_one :postcode
+
+  index({ full_address: 1 })
 
   private
 
