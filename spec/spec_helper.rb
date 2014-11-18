@@ -8,6 +8,7 @@ Mongoid.load!(File.join(File.dirname(__FILE__), "..", "config", "mongoid.yml"), 
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  FactoryGirl.definition_file_paths = %w(lib/mongoid_address_models/factories)
   FactoryGirl.find_definitions
 
   config.before(:suite) do
