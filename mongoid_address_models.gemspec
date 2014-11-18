@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "mongoid"
   s.add_dependency "mongoid_token"
   s.add_dependency "mongoid_geospatial"
-  s.add_dependency "database_cleaner"
   s.add_dependency "factory_girl"
   s.add_dependency "stringex"
 
