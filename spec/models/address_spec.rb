@@ -54,4 +54,19 @@ describe Address do
 
     expect(address.valid?).to be_false
   end
+
+  it "enforces the presence of either a pao or sao" do
+    address1 = FactoryGirl.build(:address, pao: nil, sao: nil)
+    address2 = FactoryGirl.build(:address, sao: nil)
+    address3 = FactoryGirl.build(:address, pao: nil)
+
+    address1.save
+    address2.save
+    address3.save
+
+    expect(address1.valid?).to be_false
+    expect(address2.valid?).to be_true
+    expect(address3.valid?).to be_true
+  end
+
 end

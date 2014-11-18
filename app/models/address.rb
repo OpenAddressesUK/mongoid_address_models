@@ -3,6 +3,7 @@ class Address < Tokenable
   before_save :generate_full_address
   validates_uniqueness_of :full_address
   validates_presence_of :street
+  validates_presence_of [:pao, :sao]
 
   field :pao, type: String
   field :sao, type: String
