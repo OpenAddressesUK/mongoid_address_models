@@ -7,11 +7,11 @@ require "mongoid_address_models/version"
 Gem::Specification.new do |s|
   s.name        = "mongoid_address_models"
   s.version     = MongoidAddressModels::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of MongoidAddressModels."
-  s.description = "TODO: Description of MongoidAddressModels."
+  s.authors     = ["Stuart Harrison"]
+  s.email       = ["tech@openaddressesuk.org"]
+  s.homepage    = "http://openaddressesuk.org"
+  s.summary     = "Shared address models for theodolite and distiller"
+  s.description = "Shared address models for theodolite and distiller"
   s.license     = "MIT"
 
   s.files = `git ls-files`.split($\)
