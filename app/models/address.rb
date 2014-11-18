@@ -1,7 +1,8 @@
 class Address < Tokenable
 
-  before_save :generate_full_address
+  before_validation :generate_full_address
   validates_uniqueness_of :full_address
+
   validates_presence_of :street
   validates_presence_of [:pao, :sao]
 

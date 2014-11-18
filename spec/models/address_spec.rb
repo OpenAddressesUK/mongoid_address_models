@@ -41,11 +41,11 @@ describe Address do
   end
 
   it "enforces the uniqueness of a full address" do
-    2.times do
-      FactoryGirl.create(:address)
-    end
+    FactoryGirl.create(:address)
+    address = FactoryGirl.build(:address)
+    address.save
 
-    expect(Address.count).to eq(1)
+    expect(address.valid?).to eq(false)
   end
 
   it "enforces the presence of a street" do
