@@ -6,17 +6,16 @@ describe Address do
     it "creates an address" do
       address = FactoryGirl.create(
                                 :address,
-                                pao: "Flat 1",
-                                sao: "123",
+                                sao: "Flat 1",
+                                pao: "123",
                                 street: FactoryGirl.create(:street, name: "Toy Street"),
                                 locality: FactoryGirl.create(:locality, name: "Toytown"),
                                 town: FactoryGirl.create(:town, name: "Toyland"),
                                 postcode: FactoryGirl.create(:postcode, name: "TOY 123")
                               )
 
-
-      expect(address.pao).to eq "Flat 1"
-      expect(address.sao).to eq "123"
+      expect(address.sao).to eq "Flat 1"
+      expect(address.pao).to eq "123"
       expect(address.street.name).to eq "Toy Street"
       expect(address.locality.name).to eq "Toytown"
       expect(address.town.name).to eq "Toyland"
@@ -24,9 +23,17 @@ describe Address do
   end
 
   it "generates a full address" do
-    address = FactoryGirl.create(:address)
+    address = FactoryGirl.create(
+                              :address,
+                              sao: "Flat 1",
+                              pao: "123",
+                              street: FactoryGirl.create(:street, name: "Toy Street"),
+                              locality: FactoryGirl.create(:locality, name: "Toytown"),
+                              town: FactoryGirl.create(:town, name: "Toyland"),
+                              postcode: FactoryGirl.create(:postcode, name: "TOY 123")
+                            )
 
-    expect(address.full_address).to eq("The Batcave, Stately Wayne Manor, Bat Street, Arkham, Gotham City, W12 8QT")
+    expect(address.full_address).to eq("Flat 1, 123 Toy Street, Toytown, Toyland, TOY 123")
   end
 
   it "changes full address on subsequent save" do

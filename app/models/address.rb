@@ -10,6 +10,7 @@ class Address < Tokenable
   field :pao, type: String
   field :sao, type: String
   field :full_address, type: String
+  field :full_address_lines, type: Array
 
   embeds_one :street
   embeds_one :locality
@@ -20,17 +21,31 @@ class Address < Tokenable
 
   private
 
-    def generate_full_address
-      address = [
-        :sao,
-        :pao,
-        :street,
-        :locality,
-        :town,
-        :postcode
-      ].map { |e| self.send(e).class == String ? self.send(e) : self.send(e).try(:name) }
+    def generate_lines
+      address =  [
+                  :sao,
+                  :pao,
+                  :street,
+                  :locality,
+                  :town,
+                  :postcode
+      ].map do |e|
+        val = self.send(e).class == String ? self.send(e) : self.send(e).try(:name)
+        unless e == :pao && val =~ /\d/
+          if e == :street && self.pao =~ /\d/ && !val.nil?
+            self.pao + ' ' + val
+          else
+            val
+          end
+        end
+      end
 
-      self.full_address = address.reject { |e| e.nil? }.join(", ")
+      address.reject { |e| e.nil? }
+    end
+
+    def generate_full_address
+      self.full_address_lines = generate_lines
+      self.full_address = generate_lines.join(", ")
     end
 
     def sao_blank?
