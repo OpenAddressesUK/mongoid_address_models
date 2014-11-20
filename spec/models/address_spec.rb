@@ -62,6 +62,13 @@ describe Address do
     expect(address.valid?).to eq(false)
   end
 
+  it "enforces the presence of a town" do
+    address = FactoryGirl.build(:address, town: nil)
+    address.save
+
+    expect(address.valid?).to eq(false)
+  end
+
   it "enforces the presence of either a pao or sao" do
     address1 = FactoryGirl.build(:address, pao: nil, sao: nil)
     address2 = FactoryGirl.build(:address, sao: nil)

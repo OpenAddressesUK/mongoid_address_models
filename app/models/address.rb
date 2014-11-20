@@ -4,6 +4,7 @@ class Address < Tokenable
   validates_uniqueness_of :full_address
 
   validates_presence_of :street
+  validates_presence_of :town
   validates_presence_of :pao, if: :sao_blank?
   validates_presence_of :sao, if: :pao_blank?
 
