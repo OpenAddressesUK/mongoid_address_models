@@ -1,4 +1,10 @@
-class Address < Tokenable
+class Address
+
+  include Mongoid::Document
+  include Mongoid::Timestamps
+  include Mongoid::Token
+  
+  token :contains => :alphanumeric, :length => 6
 
   before_validation :generate_full_address
   validates_uniqueness_of :full_address
