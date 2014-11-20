@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     mongoid_address_models (0.0.1)
-      factory_girl
       mongoid
       mongoid_geospatial
       mongoid_token
