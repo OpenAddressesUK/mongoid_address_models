@@ -36,6 +36,20 @@ describe Address do
     expect(address.full_address).to eq("Flat 1, 123 Toy Street, Toytown, Toyland, TOY 123")
   end
 
+  it "generates a full address with strang addressable objects" do
+    address = FactoryGirl.create(
+                              :address,
+                              sao: "Flat 1",
+                              pao: "13 Monster Mansions",
+                              street: FactoryGirl.create(:street, name: "Toy Street"),
+                              locality: FactoryGirl.create(:locality, name: "Toytown"),
+                              town: FactoryGirl.create(:town, name: "Toyland"),
+                              postcode: FactoryGirl.create(:postcode, name: "TOY 123")
+                            )
+
+    expect(address.full_address).to eq("Flat 1, 13 Monster Mansions, Toy Street, Toytown, Toyland, TOY 123")
+  end
+
   it "changes full address on subsequent save" do
     address = FactoryGirl.create(:address)
 

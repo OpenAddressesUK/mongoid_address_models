@@ -32,8 +32,8 @@ class Address < Tokenable
                   :postcode
       ].map do |e|
         val = self.send(e).class == String ? self.send(e) : self.send(e).try(:name)
-        unless e == :pao && val =~ /\d/
-          if e == :street && self.pao =~ /\d/ && !val.nil?
+        unless e == :pao && val =~ num_regex
+          if e == :street && self.pao =~ num_regex && !val.nil?
             self.pao + ' ' + val
           else
             val
@@ -55,6 +55,10 @@ class Address < Tokenable
 
     def pao_blank?
       pao.blank?
+    end
+
+    def num_regex
+      /^( ?\d+ ?[a-z]?( -)?){1,2}$/
     end
 
 end
