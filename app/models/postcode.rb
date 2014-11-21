@@ -1,5 +1,7 @@
-class Postcode < AddressPart
-
+class Postcode
+  
+  include AddressPart
+  
   field :area, type: String
   field :outcode, type: String
   field :incode, type: String

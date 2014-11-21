@@ -1,5 +1,7 @@
-class Street < AddressPart
+class Street
 
+  include AddressPart
+  
   field :settlement, type: String
   field :locality, type: String
   field :authority, type: String

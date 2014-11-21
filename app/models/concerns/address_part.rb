@@ -1,15 +1,20 @@
-require_relative './tokenable' # Needed because AddressPart gets loaded in first
+module AddressPart
 
-class AddressPart < Tokenable
-  include Mongoid::Geospatial
+  extend ActiveSupport::Concern
 
-  validates_presence_of :name
+  included do
 
-  field :name, type: String
-  field :lat_lng, type: Point
-  field :easting_northing, type: Point
+    include Tokenable
+    include Mongoid::Geospatial
 
-  index({ name: 1 })
-  index({lat_lng: "2d"})
-  index({easting_northing: "2d"}, {min: 0, max: 1300000})
+    validates_presence_of :name
+
+    field :name, type: String
+    field :lat_lng, type: Mongoid::Geospatial::Point
+    field :easting_northing, type: Mongoid::Geospatial::Point
+
+    index({ name: 1 })
+    index({lat_lng: "2d"})
+    index({easting_northing: "2d"}, {min: 0, max: 1300000})
+  end
 end

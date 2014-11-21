@@ -1,9 +1,14 @@
-class Tokenable
-  include Mongoid::Document
-  include Mongoid::Timestamps
-  include Mongoid::Token
-
-  token :contains => :alphanumeric, :length => 6
+module Tokenable
+  extend ActiveSupport::Concern
   
-  field :provenance, type: Hash
+  included do
+    
+    include Mongoid::Document
+    include Mongoid::Timestamps
+    include Mongoid::Token
+
+    token :contains => :alphanumeric, :length => 6
+    
+    field :provenance, type: Hash
+  end
 end
