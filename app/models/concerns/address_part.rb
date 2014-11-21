@@ -3,6 +3,8 @@ require_relative './tokenable' # Needed because AddressPart gets loaded in first
 class AddressPart < Tokenable
   include Mongoid::Geospatial
 
+  validates_presence_of :name
+
   field :name, type: String
   field :lat_lng, type: Point
   field :easting_northing, type: Point
