@@ -7,6 +7,7 @@ FactoryGirl.define do
     street { FactoryGirl.create(:street, name: "Bat Street") }
     pao "Stately Wayne Manor"
     sao "The Batcave"
+    provenance executed_at: "now", code: "some codez", nested: { this: "works" }
   end
 
 end
