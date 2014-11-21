@@ -12,6 +12,7 @@ FactoryGirl.define do
     authority "S12000033"
     lat_lng [57.101478, -2.242835]
     easting_northing [801193, 385386]
+    provenance executed_at: "now", code: "some codez", nested: { this: "works" }
   end
 
 end

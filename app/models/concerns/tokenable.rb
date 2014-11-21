@@ -4,4 +4,6 @@ class Tokenable
   include Mongoid::Token
 
   token :contains => :alphanumeric, :length => 6
+  
+  field :provenance, type: Hash
 end

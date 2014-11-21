@@ -6,6 +6,8 @@ class Address
   
   token :contains => :alphanumeric, :length => 6
 
+  field :provenance, type: Hash
+
   before_validation :generate_full_address
   validates_uniqueness_of :full_address
 
