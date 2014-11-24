@@ -1,6 +1,6 @@
 # Mongoid Address Models
 
-These are the core models used in the [Theodolite](https://github.com/OpenAddressesUK/theodolite) and [Distiller](https://github.com/OpenAddressesUK/distiller) projects.
+This repository is about the core data models used in the [Theodolite](https://github.com/OpenAddressesUK/theodolite) and [Distiller](https://github.com/OpenAddressesUK/distiller) Open Addresses projects, part of the solution we deployed for the Alpha stage of our services. Learn more about Open Addresses in general [here](http://openaddressesuk.org).
 
 Addresses are made up of the following components:
 
@@ -26,3 +26,6 @@ And running `bundle install`
 Add the gem to your Gemfile and `bundle install` as above, but made sure to require in your project:
 
     require 'mongoid_address_models/require_all'
+
+##Licence
+![Creative Commons License](http://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License") This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
