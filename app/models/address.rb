@@ -21,10 +21,10 @@ class Address
   embeds_one :postcode
 
   index({ full_address: 1 })
-  index({ street.name: 1 })
-  index({ postcode.name: 1 })
-  index({ town.name: 1 })
-  index({ locality.name: 1 })
+  index({ "street.name": 1 })
+  index({ "postcode.name": 1 })
+  index({ "town.name": 1 })
+  index({ "locality.name": 1 })
 
   private
 
