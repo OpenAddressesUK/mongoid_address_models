@@ -25,6 +25,10 @@ class Address
   index({ "postcode.name" => 1 })
   index({ "town.name" => 1 })
   index({ "locality.name" => 1 })
+  index({ "street.token" => 1 })
+  index({ "postcode.token" => 1 })
+  index({ "town.token" => 1 })
+  index({ "locality.token" => 1 })
 
   private
 
