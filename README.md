@@ -1,4 +1,5 @@
-# Mongoid Address Models
+Mongoid Address Models
+======================
 
 This repository is about the core data models used in the [Theodolite](https://github.com/OpenAddressesUK/theodolite) and [Distiller](https://github.com/OpenAddressesUK/distiller) Open Addresses projects, part of the solution we deployed for the Alpha stage of our services. Learn more about Open Addresses in general [here](http://openaddressesuk.org).
 
@@ -27,5 +28,5 @@ Add the gem to your Gemfile and `bundle install` as above, but made sure to requ
 
     require 'mongoid_address_models/require_all'
 
-##Licence
-![Creative Commons License](http://i.creativecommons.org/l/by/4.0/88x31.png "Creative Commons License") This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+## Licence
+This code is open source under the MIT license. See the [LICENSE.md](LICENSE.md) file for full details.
