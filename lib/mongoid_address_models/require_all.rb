@@ -2,7 +2,10 @@
 require 'mongoid'
 require 'mongoid_token'
 require 'mongoid_geospatial'
+require 'mongoid-elasticsearch'
 require 'stringex'
+
+Mongoid::Elasticsearch.autocreate_indexes = false
 
 root_path = "#{File.dirname(__FILE__)}/../.."
 %w[ app/models ].each do |path|
