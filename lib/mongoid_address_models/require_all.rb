@@ -2,6 +2,7 @@
 require 'mongoid'
 require 'mongoid_token'
 require 'mongoid_geospatial'
+require 'mongoid-elasticsearch'
 require 'stringex'
 
 root_path = "#{File.dirname(__FILE__)}/../.."
