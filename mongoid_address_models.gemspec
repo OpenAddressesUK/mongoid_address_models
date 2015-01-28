@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "mongoid"
   s.add_dependency "mongoid_token"
   s.add_dependency "mongoid_geospatial"
+  s.add_dependency "mongoid-elasticsearch"
   s.add_dependency "stringex"
 
   s.add_development_dependency "rspec"
