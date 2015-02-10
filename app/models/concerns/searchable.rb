@@ -43,10 +43,28 @@ module Searchable
       }
     })
 
-    # Do something like #name_prefix_search('FOR') to get everything starting with FOR
+    # Do something like #name_prefix_search('FOR') to get all names starting with FOR
     def self.name_prefix_search(str)
-      es.search(index: es.index.name, body: {query: {match_phrase_prefix: {name: str}}})
-    end
-
-  end
+      
+      scroll = es.client.search index: es.index.name,
+                         scroll: '5m',
+                         search_type: 'scan',
+                         body: {
+                           query: {
+                             match_phrase_prefix: {
+                               name: str
+                             }
+                           }
+                         }
+      
+      results = []
+      loop do
+        scroll = es.client.scroll(scroll_id: scroll['_scroll_id'], scroll: '5m')
+        break if scroll['hits']['hits'].empty?        
+        results.concat scroll['hits']['hits'].map { |x| x['_source']['name'] }
+      end
+      results.uniq
+    end    
+    
+  end    
 end
