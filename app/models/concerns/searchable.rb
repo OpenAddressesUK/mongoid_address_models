@@ -45,14 +45,16 @@ module Searchable
 
     # Do something like #name_prefix_search('FOR') to get all names starting with FOR
     def self.name_prefix_search(str)
-      
       scroll = es.client.search index: es.index.name,
                          scroll: '5m',
                          search_type: 'scan',
                          body: {
                            query: {
                              match_phrase_prefix: {
-                               name: str
+                               name: {
+                                 query: str,
+                                 max_expansions: 1024
+                               }
                              }
                            }
                          }
