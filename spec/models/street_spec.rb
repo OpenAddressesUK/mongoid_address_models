@@ -5,13 +5,13 @@ describe Street do
   it_behaves_like "Tokenable"
 
   it "Default factory has right lat long" do
-    street = FactoryGirl.create(:street)
+    street = FactoryGirl.build(:street)
     expect(street.lat_lng.lat).to eq(57.101478)
     expect(street.lat_lng.long).to eq(-2.242835)
   end
 
   it "Creates successfully" do
-    street = FactoryGirl.create(:street,
+    street = FactoryGirl.build(:street,
           name: "ZETLAND TERRACE",
           settlement: "Saltburn-by-the-Sea",
           locality: "Saltburn, Marske and New Marske",

@@ -5,13 +5,13 @@ describe Postcode do
   it_behaves_like "Tokenable"
 
   it "Default factory has right lat long" do
-    postcode = FactoryGirl.create(:postcode)
+    postcode = FactoryGirl.build(:postcode)
     expect(postcode.lat_lng.lat).to eq(57.101478)
     expect(postcode.lat_lng.long).to eq(-2.242835)
   end
 
   it "Creates successfully" do
-    postcode = FactoryGirl.create(:postcode,
+    postcode = FactoryGirl.build(:postcode,
           name: "SW1A 1AA",
           area: "SW1",
           outcode: "SW1A",
