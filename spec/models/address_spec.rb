@@ -97,4 +97,12 @@ describe Address do
     expect(address3.valid?).to eq(true)
   end
 
+  it "correctly saves changes to child documents" do
+    address1 = FactoryGirl.create(:address)
+    expect(Address.first.postcode.lat_lng.lat).to eq 57.101478
+    address1.postcode.lat_lng = [0,0]
+    address1.save
+    expect(Address.first.postcode.lat_lng.lat).to eq 0
+  end
+
 end
