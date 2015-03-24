@@ -9,6 +9,8 @@ module AddressPart
 
     validates_presence_of :name
 
+    embedded_in :address
+
     field :name, type: String
     field :lat_lng, type: Mongoid::Geospatial::Point
     field :easting_northing, type: Mongoid::Geospatial::Point
