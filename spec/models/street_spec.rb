@@ -30,4 +30,31 @@ describe Street do
     expect(street.easting_northing.y).to eq(521260)
   end
 
+  it "Changes shortened prefixes" do
+    street = FactoryGirl.create(:street, name: "PIGEON STREET")
+
+    results = Street.where(name: "PIGEON ST.")
+
+    expect(results.count).to eq(1)
+    expect(results.first).to eq(street)
+  end
+
+  it "works if a prefix doesn't have a full stop" do
+    street = FactoryGirl.create(:street, name: "ARCACIA AVENUE")
+
+    results = Street.where(name: "ARCACIA AVE")
+
+    expect(results.count).to eq(1)
+    expect(results.first).to eq(street)
+  end
+
+  it "ignores things that look like prefixes in the middle of a street" do
+    street = FactoryGirl.create(:street, name: "UPPER ST. JOHN STREET")
+
+    results = Street.where(name: "UPPER ST. JOHN STREET")
+
+    expect(results.count).to eq(1)
+    expect(results.first).to eq(street)
+  end
+
 end
