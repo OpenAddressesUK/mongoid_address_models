@@ -21,6 +21,7 @@ class Address
   embeds_one :postcode
 
   index({ full_address: 1 })
+  index({ updated_at: 1 }, {background: true})
   index({ "street.name" => 1 })
   index({ "postcode.name" => 1 })
   index({ "town.name" => 1 })

@@ -1,7 +1,8 @@
 class Postcode
   
   include AddressPart
-  
+  include Searchable
+
   field :area, type: String
   field :outcode, type: String
   field :incode, type: String
