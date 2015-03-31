@@ -16,6 +16,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
+  I18n.enforce_available_locales = false
+
   config.before(:each) do
     DatabaseCleaner.start
     Street.create_indexes
