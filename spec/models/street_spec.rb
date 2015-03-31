@@ -5,13 +5,13 @@ describe Street do
   it_behaves_like "Tokenable"
 
   it "Default factory has right lat long" do
-    street = FactoryGirl.build(:street)
+    street = FactoryGirl.create(:street)
     expect(street.lat_lng.lat).to eq(57.101478)
     expect(street.lat_lng.long).to eq(-2.242835)
   end
 
   it "Creates successfully" do
-    street = FactoryGirl.build(:street,
+    street = FactoryGirl.create(:street,
           name: "ZETLAND TERRACE",
           settlement: "Saltburn-by-the-Sea",
           locality: "Saltburn, Marske and New Marske",
@@ -28,33 +28,6 @@ describe Street do
     expect(street.lat_lng.long).to eq(-0.97886718711)
     expect(street.easting_northing.x).to eq(466096)
     expect(street.easting_northing.y).to eq(521260)
-  end
-
-  it "Changes shortened prefixes" do
-    street = FactoryGirl.create(:street, name: "PIGEON STREET")
-
-    results = Street.where(name: "PIGEON ST.")
-
-    expect(results.count).to eq(1)
-    expect(results.first).to eq(street)
-  end
-
-  it "works if a prefix doesn't have a full stop" do
-    street = FactoryGirl.create(:street, name: "ARCACIA AVENUE")
-
-    results = Street.where(name: "ARCACIA AVE")
-
-    expect(results.count).to eq(1)
-    expect(results.first).to eq(street)
-  end
-
-  it "ignores things that look like prefixes in the middle of a street" do
-    street = FactoryGirl.create(:street, name: "UPPER ST. JOHN STREET")
-
-    results = Street.where(name: "UPPER ST. JOHN STREET")
-
-    expect(results.count).to eq(1)
-    expect(results.first).to eq(street)
   end
 
 end

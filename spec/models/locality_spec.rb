@@ -5,13 +5,13 @@ describe Locality do
   it_behaves_like "Tokenable"
 
   it "Default factory has right lat long" do
-    locality = FactoryGirl.build(:locality)
+    locality = FactoryGirl.create(:locality)
     expect(locality.lat_lng.lat).to eq(57.101478)
     expect(locality.lat_lng.long).to eq(-2.242835)
   end
 
   it "Creates successfully" do
-    postcode = FactoryGirl.build(:locality,
+    postcode = FactoryGirl.create(:locality,
           name: "Woughton",
           authority: "E06000042",
           lat_lng: [-0.152918, 51.511716],
