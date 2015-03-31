@@ -31,6 +31,30 @@ class Address
   index({ "town.token" => 1 }, {background: true})
   index({ "locality.token" => 1 }, {background: true})
 
+
+  def rebuild_from_parts!
+    new_street = Street.find_by_token street.token
+    new_locality = Locality.find_by_token locality.token
+    new_town = Town.find_by_token town.token
+    new_postcode = Postcode.find_by_token postcode.token
+
+    a = Address.new pao: pao,
+                    sao: sao,
+                    street: new_street,
+                    locality: new_locality,
+                    town: new_town,
+                    postcode: new_postcode,
+                    token: token,
+                    provenance: provenance
+
+    a.valid? # to generate errors
+    # we expect a validation error on :full_address but that's OK here
+    if a.errors.messages.keys == [:full_address]
+      delete
+      a.save validate: false
+    end
+  end
+
   private
 
     def generate_lines
@@ -71,5 +95,4 @@ class Address
     def num_regex
       /^( ?\d+ ?[a-z]?( -)?){1,2}$/
     end
-
 end
