@@ -33,14 +33,12 @@ class Address
 
 
   def rebuild_from_parts!
-    delete
-
     new_street = Street.find_by_token street.token
     new_locality = Locality.find_by_token locality.token
     new_town = Town.find_by_token town.token
     new_postcode = Postcode.find_by_token postcode.token
 
-    Address.create! pao: pao,
+    a = Address.new pao: pao,
                     sao: sao,
                     street: new_street,
                     locality: new_locality,
@@ -48,6 +46,13 @@ class Address
                     postcode: new_postcode,
                     token: token,
                     provenance: provenance
+
+    a.valid? # to generate errors
+    # we expect a validation error on :full_address but that's OK here
+    if a.errors.messages.keys == [:full_address]
+      delete
+      a.save validate: false
+    end
   end
 
   private
