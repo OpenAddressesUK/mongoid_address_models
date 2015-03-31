@@ -99,13 +99,19 @@ describe Address do
 
   it "rebuilds an address from parts" do
     FactoryGirl.create(:address)
+    token = Address.first.token
+    provenance = Address.first.provenance
+
     expect(Address.first.postcode.lat_lng.lat).to eq 57.101478
-    expect(Postcode.first.name).to eq Address.first.postcode.name
+    expect(Postcode.first.token).to eq Address.first.postcode.token
 
     postcode = Postcode.first
     postcode.lat_lng = [10, 20]
     postcode.save
     Address.first.rebuild_from_parts!
+    expect(Address.count).to eq 1
     expect(Address.first.postcode.lat_lng.lat).to eq 20
+    expect(Address.first.token).to eq token
+    expect(Address.first.provenance).to eq provenance
   end
 end
