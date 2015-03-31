@@ -36,7 +36,7 @@ describe Address do
     expect(address.full_address).to eq("Flat 1, 123 Toy Street, Toytown, Toyland, TOY 123")
   end
 
-  it "generates a full address with strang addressable objects" do
+  it "generates a full address with strange addressable objects" do
     address = FactoryGirl.create(
                               :address,
                               sao: "Flat 1",
@@ -97,4 +97,15 @@ describe Address do
     expect(address3.valid?).to eq(true)
   end
 
+  it "rebuilds an address from parts" do
+    FactoryGirl.create(:address)
+    expect(Address.first.postcode.lat_lng.lat).to eq 57.101478
+    expect(Postcode.first.name).to eq Address.first.postcode.name
+
+    postcode = Postcode.first
+    postcode.lat_lng = [10, 20]
+    postcode.save
+    Address.first.rebuild_from_parts!
+    expect(Address.first.postcode.lat_lng.lat).to eq 20
+  end
 end
