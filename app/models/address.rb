@@ -33,10 +33,10 @@ class Address
 
 
   def rebuild_from_parts!
-    new_street = Street.find_by_token street.token
-    new_locality = Locality.find_by_token locality.token
-    new_town = Town.find_by_token town.token
-    new_postcode = Postcode.find_by_token postcode.token
+    new_street = street.nil? ? nil : Street.find_by_token(street.token)
+    new_locality = locality.nil? ? nil : Locality.find_by_token(locality.token)
+    new_town = town.nil? ? nil : Town.find_by_token(town.token)
+    new_postcode = postcode.nil? ? nil : Postcode.find_by_token(postcode.token)
 
     a = Address.new pao: pao,
                     sao: sao,
