@@ -10,6 +10,7 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   FactoryGirl.definition_file_paths = %w(lib/mongoid_address_models/factories)
   FactoryGirl.find_definitions
+  I18n.enforce_available_locales = false
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
