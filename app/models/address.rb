@@ -24,6 +24,7 @@ class Address
   index({ updated_at: 1 }, {background: true})
   index({ "street.name" => 1 })
   index({ "postcode.name" => 1 })
+  index({ "postcode.area" => 1 })
   index({ "town.name" => 1 })
   index({ "locality.name" => 1 })
   index({ "street.token" => 1 }, {background: true})
