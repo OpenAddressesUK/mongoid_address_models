@@ -14,6 +14,7 @@ class Address
   field :sao, type: String
   field :full_address, type: String
   field :full_address_lines, type: Array
+  field :source, type: String, default: "url"
 
   embeds_one :street
   embeds_one :locality
@@ -22,6 +23,8 @@ class Address
 
   index({ full_address: 1 })
   index({ updated_at: 1 }, {background: true})
+  index({ source: 1 })
+
   index({ "street.name" => 1 })
   index({ "postcode.name" => 1 })
   index({ "postcode.area" => 1 })
@@ -31,7 +34,6 @@ class Address
   index({ "postcode.token" => 1 }, {background: true})
   index({ "town.token" => 1 }, {background: true})
   index({ "locality.token" => 1 }, {background: true})
-
 
   def rebuild_from_parts!
     new_street = street.nil? ? nil : Street.find_by_token(street.token)

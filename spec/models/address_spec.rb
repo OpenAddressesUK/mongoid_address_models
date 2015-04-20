@@ -20,6 +20,13 @@ describe Address do
       expect(address.locality.name).to eq "Toytown"
       expect(address.town.name).to eq "Toyland"
       expect(address.postcode.name).to eq "TOY 123"
+      expect(address.source).to eq("url")
+  end
+
+  it "allows source to be set" do
+    address = FactoryGirl.create(:address, source: "userInput")
+
+    expect(address.source).to eq("userInput")
   end
 
   it "generates a full address" do
