@@ -32,6 +32,7 @@ class Address
   index({ "locality.name" => 1 })
   index({ "street.token" => 1 }, {background: true})
   index({ "postcode.token" => 1 }, {background: true})
+  index({ "postcode.authority" => 1 }, {background: true})
   index({ "town.token" => 1 }, {background: true})
   index({ "locality.token" => 1 }, {background: true})
 
