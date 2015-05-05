@@ -10,8 +10,8 @@ class Address
   validates_presence_of :pao, if: :sao_blank?
   validates_presence_of :sao, if: :pao_blank?
 
-  field :pao, type: String
   field :uprn, type: String
+  field :pao, type: String
   field :sao, type: String
   field :full_address, type: String
   field :full_address_lines, type: Array
