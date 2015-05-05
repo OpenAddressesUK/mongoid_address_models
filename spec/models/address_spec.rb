@@ -35,6 +35,7 @@ describe Address do
   it "generates a full address" do
     address = FactoryGirl.create(
                               :address,
+                              uprn: "100012345678",
                               sao: "Flat 1",
                               pao: "123",
                               street: FactoryGirl.create(:street, name: "Toy Street"),
@@ -49,6 +50,7 @@ describe Address do
   it "generates a full address with strange addressable objects" do
     address = FactoryGirl.create(
                               :address,
+                              uprn: "100012345678",
                               sao: "Flat 1",
                               pao: "13 Monster Mansions",
                               street: FactoryGirl.create(:street, name: "Toy Street"),
