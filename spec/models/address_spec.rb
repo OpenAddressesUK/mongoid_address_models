@@ -1,4 +1,5 @@
 require 'spec_helper'
+require_relative '_tokenable_spec'
 
 describe Address do
     it_behaves_like "Tokenable"
@@ -6,6 +7,7 @@ describe Address do
     it "creates an address" do
       address = FactoryGirl.create(
                                 :address,
+                                uprn: "100012345678",
                                 sao: "Flat 1",
                                 pao: "123",
                                 street: FactoryGirl.create(:street, name: "Toy Street"),
@@ -14,6 +16,7 @@ describe Address do
                                 postcode: FactoryGirl.create(:postcode, name: "TOY 123")
                               )
 
+      expect(address.uprn).to eq "100012345678"
       expect(address.sao).to eq "Flat 1"
       expect(address.pao).to eq "123"
       expect(address.street.name).to eq "Toy Street"
@@ -32,6 +35,7 @@ describe Address do
   it "generates a full address" do
     address = FactoryGirl.create(
                               :address,
+                              uprn: "100012345678",
                               sao: "Flat 1",
                               pao: "123",
                               street: FactoryGirl.create(:street, name: "Toy Street"),
@@ -46,6 +50,7 @@ describe Address do
   it "generates a full address with strange addressable objects" do
     address = FactoryGirl.create(
                               :address,
+                              uprn: "100012345678",
                               sao: "Flat 1",
                               pao: "13 Monster Mansions",
                               street: FactoryGirl.create(:street, name: "Toy Street"),
